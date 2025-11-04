@@ -47,7 +47,7 @@ export function TriviaDataProvider({ children }) {
             // Update state
             setQuestions(decodedQuestions);
             setCategories(uniqueCategories);
-            setSelectedCategories(uniqueCategories);
+            // setSelectedCategories(uniqueCategories);
         } catch (err) {
             console.error("Error loading trivia data:", err);
             setError(err.message);

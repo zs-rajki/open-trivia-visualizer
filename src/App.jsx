@@ -2,6 +2,7 @@ import React from 'react';
 import { useTriviaData } from "./TriviaDataContext";
 import CategoryPanel from "./components/CategoryPanel";
 import QuestionDistributionChart from "./components/QuestionDistributionChart";
+import DifficultyDistributionChart from './components/DifficultyDistributionChart'; 
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
                 <QuestionDistributionChart />
             </div>
             <div className="difficulty-distribution-chart">
-
+                <DifficultyDistributionChart />
             </div>
         </div>
     );
