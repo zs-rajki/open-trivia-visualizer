@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTriviaData } from "./TriviaDataContext";
+import CategoryPanel from "./components/CategoryPanel";
 
 function App() {
 
@@ -13,14 +14,9 @@ function App() {
             <div className="header">
                 <h1>Open Trivia Visualizer</h1>
                 <p>Loaded {questions.length} questions from {categories.length} categories.</p>
-                <ul>
-                    {categories.map((cat, i) => (
-                        <li key={i}>{cat}</li>
-                    ))}
-                </ul>
             </div>
-            <div className="control-panel">
-
+            <div className="category-panel">
+                <CategoryPanel />
             </div>
             <div className="chart1">
 

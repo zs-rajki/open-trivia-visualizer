@@ -12,12 +12,11 @@ body {
     background-color: #0f0f0f;
 }
 
-
 .grid {
     display: grid;
     grid-template-areas:
-    "header header header"
-    "control chart1 chart2";
+    "category header header"
+    "category chart1 chart2";
     grid-template-columns: 1fr 2fr 2fr;
     grid-template-rows: auto 1fr;
     height: 100vh;
@@ -25,7 +24,6 @@ body {
     gap: 1rem;
     padding: 1rem;
 }
-
 
 .header {
     grid-area: header;
@@ -35,7 +33,8 @@ body {
     align-items: center;
     color: #ffffff;
 }
-.control-panel,
+
+.category-panel,
 .chart1,
 .chart2 {
     background: rgba(255, 255, 255, 0.04);
@@ -46,8 +45,8 @@ body {
     height: 100%;
 }
 
-.control-panel {
-    grid-area: control;
+.category-panel {
+    grid-area: category;
 }
 
 .chart1 {
