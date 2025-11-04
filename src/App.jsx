@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTriviaData } from "./TriviaDataContext";
 import CategoryPanel from "./components/CategoryPanel";
+import QuestionDistributionChart from "./components/QuestionDistributionChart";
 
 function App() {
 
@@ -18,10 +19,10 @@ function App() {
             <div className="category-panel">
                 <CategoryPanel />
             </div>
-            <div className="chart1">
-
+            <div className="question-distribution-chart">
+                <QuestionDistributionChart />
             </div>
-            <div className="chart2">
+            <div className="difficulty-distribution-chart">
 
             </div>
         </div>

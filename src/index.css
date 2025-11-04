@@ -16,9 +16,10 @@ body {
     display: grid;
     grid-template-areas:
     "category header header"
-    "category chart1 chart2";
+    "category chart2 chart2"
+    "category chart1 chart1";
     grid-template-columns: 1fr 2fr 2fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr 1fr;
     height: 100vh;
     width: 100%;
     gap: 1rem;
@@ -35,8 +36,8 @@ body {
 }
 
 .category-panel,
-.chart1,
-.chart2 {
+.question-distribution-chart,
+.difficulty-distribution-chart {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
@@ -49,10 +50,10 @@ body {
     grid-area: category;
 }
 
-.chart1 {
+.question-distribution-chart {
     grid-area: chart1;
 }
 
-.chart2 {
+.difficulty-distribution-chart {
     grid-area: chart2;
 }
