@@ -60,27 +60,6 @@
 }
 
 .categoryItemSelected {
-    background: rgba(100, 108, 255, 0.2);
-    border-color: rgba(100, 108, 255, 0.4);
-    color: #ffffff;
-}
-
-.categoryItemSelected:hover {
-    background: rgba(100, 108, 255, 0.3);
-    border-color: rgba(100, 108, 255, 0.5);
-}
-
-.categoryItemSelected {
-    background: rgba(46, 196, 182, 0.2);
-    border-color: rgba(46, 196, 182, 0.45);
-}
-
-.categoryItemSelected:hover {
-    background: rgba(46, 196, 182, 0.3);
-    border-color: rgba(46, 196, 182, 0.6);
-}
-
-.categoryItemSelected {
     background: rgba(252, 163, 17, 0.18);
     border-color: rgba(252, 163, 17, 0.4);
 }

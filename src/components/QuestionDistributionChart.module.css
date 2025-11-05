@@ -42,11 +42,6 @@
     font-weight: 600;
 }
 
-/* Bar chart styling */
-.barChart {
-    /* You can add additional chart container styles here */
-}
-
 .bar {
     cursor: pointer;
 }

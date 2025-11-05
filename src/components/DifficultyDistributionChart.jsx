@@ -82,9 +82,10 @@ export default function DifficultyDistributionChart() {
                         data={data}
                         cx="50%"
                         cy="50%"
-                        innerRadius={60}
-                        outerRadius={120}
-                        paddingAngle={0}
+                        // innerRadius={60}
+                        // outerRadius={120}
+                        innerRadius="45%"
+                        outerRadius="90%"
                         dataKey="value"
                         nameKey="name"
                         label={renderLabelInside} // custom label inside slices
