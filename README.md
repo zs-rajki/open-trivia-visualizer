@@ -1,16 +1,38 @@
-# React + Vite
+# Open Trivia Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React app that fetches questions from the Open Trivia DB and visualizes the data with charts (by category and difficulty).
 
-Currently, two official plugins are available:
+Quick overview
+- Data provider and caching: [`TriviaDataContext`](src/TriviaDataContext.jsx)
+- Category list: [`CategoryPanel`](src/components/CategoryPanel.jsx)
+- Charts:
+  - [`QuestionDistributionChart`](src/components/QuestionDistributionChart.jsx)
+  - [`DifficultyDistributionChart`](src/components/DifficultyDistributionChart.jsx)
+  - Reusable tooltip: [`ChartTooltip`](src/components/ChartTooltip.jsx)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features
+- Fetches 50 questions from Open Trivia DB and decodes HTML entities.
+- Local caching in localStorage to avoid rapid repeated API calls.
+- Interactive charts built with Recharts. Click categories in the left panel to filter the charts.
 
-## React Compiler
+Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Install
+```sh
+npm install
+```
 
-## Expanding the ESLint configuration
+2. Run dev server
+```sh
+npm run dev
+# open http://localhost:5173
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+How it works (short)
+- The app is wrapped with [`TriviaDataProvider`](src/TriviaDataContext.jsx) in [src/main.jsx](src/main.jsx).
+- [`useTriviaData`](src/TriviaDataContext.jsx) exposes questions, categories, selectedCategories and toggleCategory to UI.
+- Charts subscribe to the context and re-render when selection changes.
+
+Notes & troubleshooting
+- The provider caches results in localStorage (`triviaCache`, `lastTriviaFetch`) and skips API calls if a recent fetch exists (to avoid 429).
+- If you see no data, check the browser console for fetch errors and verify the Open Trivia DB endpoint is reachable.

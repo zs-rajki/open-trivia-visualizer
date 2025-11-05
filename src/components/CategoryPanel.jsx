@@ -2,6 +2,9 @@ import React from 'react';
 import { useTriviaData } from '../TriviaDataContext';
 import styles from './CategoryPanel.module.css';
 
+/**
+ * Displays a panel with the list of trivia categories that can be selected.
+ */
 function CategoryPanel() {
     const { categories, selectedCategories, toggleCategory } = useTriviaData();
 

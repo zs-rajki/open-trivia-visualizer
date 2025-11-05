@@ -1,21 +1,30 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 const TriviaDataContext = createContext();
-
+/**
+ * Provides trivia data and category selection state to child components.
+ */
 export function TriviaDataProvider({ children }) {
     const [questions, setQuestions] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    // This is used to prevent multiple fetches in strict mode
     const hasFetched = useRef(false);
 
+    /**
+     * Decode HTML entities in a string
+     */
     function decodeHtml(html) {
         const txt = document.createElement("textarea");
         txt.innerHTML = html;
         return txt.value;
     }
 
+    /** 
+     * Fetch trivia data from the API
+     */
     async function loadData() {
         try {
             setLoading(true);
@@ -45,7 +54,7 @@ export function TriviaDataProvider({ children }) {
             setQuestions(decodedQuestions);
             setCategories(uniqueCategories);
 
-            // Cache data & timestamp
+            // Cache data and timestamp
             localStorage.setItem("triviaCache", JSON.stringify(decodedQuestions));
             localStorage.setItem("lastTriviaFetch", Date.now().toString());
         } catch (err) {
@@ -88,6 +97,9 @@ export function TriviaDataProvider({ children }) {
         fetchData();
     }, []);
 
+    /**
+     * Toggle selection of a category
+     */
     function toggleCategory(category) {
         setSelectedCategories(prev =>
             prev.includes(category) ? prev.filter(cat => cat !== category) : [...prev, category]

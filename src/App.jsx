@@ -8,6 +8,7 @@ function App() {
 
     const { questions, categories, loading, error } = useTriviaData();
 
+    // Handle loading and error states
     if (loading) return <div className="alt-page">Loading trivia data...</div>;
     if (error) return <div className="alt-page error">Error: {error}</div>;
 

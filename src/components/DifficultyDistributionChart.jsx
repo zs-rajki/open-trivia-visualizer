@@ -11,6 +11,9 @@ import { useTriviaData } from "../TriviaDataContext";
 import styles from "./DifficultyDistributionChart.module.css";
 import ChartTooltip from "./ChartTooltip";
 
+/**
+ * Displays a pie chart showing the distribution of questions by difficulty.
+ */
 export default function DifficultyDistributionChart() {
     const { questions, selectedCategories } = useTriviaData();
 

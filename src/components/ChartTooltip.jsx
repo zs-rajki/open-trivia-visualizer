@@ -2,19 +2,7 @@ import React from 'react';
 import styles from './ChartTooltip.module.css';
 
 /**
- * Reusable tooltip for Recharts.
- * Works for Bar/Pie etc. by inspecting payload.
- *
- * Props forwarded by Recharts:
- * - active: boolean
- * - payload: [{ value, name, payload: { name, ... } }, ...]
- * - label: string (for some charts)
- *
- * Optional props:
- * - valueLabel: label prefix for the numeric value (default: 'Count')
- * - className: extra class names
- * - formatLabel: (label: string) => string
- * - formatValue: (value: number) => string | number
+ * Reusable custom tooltip for Recharts.
  */
 export default function ChartTooltip({ active, payload, label, valueLabel = 'Count', className = '', formatLabel, formatValue }) {
     if (!active || !payload || payload.length === 0) return null;

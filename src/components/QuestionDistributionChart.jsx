@@ -12,6 +12,9 @@ import { useTriviaData } from "../TriviaDataContext";
 import styles from './QuestionDistributionChart.module.css';
 import ChartTooltip from './ChartTooltip';
 
+/**
+ * Displays a bar chart showing the distribution of questions by category.
+ */
 export default function QuestionDistributionChart() {
     const { questions, selectedCategories } = useTriviaData();
 
