@@ -17,9 +17,6 @@ export function TriviaDataProvider({ children }) {
     }
 
     async function loadData() {
-        if (hasFetched.current) return;
-        hasFetched.current = true;
-
         try {
             setLoading(true);
             setError(null);
@@ -47,7 +44,10 @@ export function TriviaDataProvider({ children }) {
             // Update state
             setQuestions(decodedQuestions);
             setCategories(uniqueCategories);
-            // setSelectedCategories(uniqueCategories);
+
+            // Cache data & timestamp
+            localStorage.setItem("triviaCache", JSON.stringify(decodedQuestions));
+            localStorage.setItem("lastTriviaFetch", Date.now().toString());
         } catch (err) {
             console.error("Error loading trivia data:", err);
             setError(err.message);
@@ -57,30 +57,52 @@ export function TriviaDataProvider({ children }) {
     }
 
     useEffect(() => {
+        if (hasFetched.current) return;
+        hasFetched.current = true;
+
         async function fetchData() {
+            const lastFetch = localStorage.getItem("lastTriviaFetch");
+            const now = Date.now();
+            const timeSinceLastFetch = lastFetch ? now - Number(lastFetch) : Infinity;
+
+            // If last fetch < 5 seconds ago, skip API call
+            if (timeSinceLastFetch < 5000) {
+                console.log("Skipping fetch to avoid API rate limit (429)");
+
+                // Load cached questions if available
+                const cached = localStorage.getItem("triviaCache");
+                if (cached) {
+                    const cachedQuestions = JSON.parse(cached);
+                    setQuestions(cachedQuestions);
+
+                    const categorySet = new Set(cachedQuestions.map(q => q.category));
+                    setCategories(Array.from(categorySet));
+                }
+
+                setLoading(false);
+                return;
+            }
+
             await loadData();
         }
         fetchData();
     }, []);
 
     function toggleCategory(category) {
-        setSelectedCategories(prev => {
-            if (prev.includes(category)) {
-                return prev.filter(cat => cat !== category);
-            } else {
-                return [...prev, category];
-            }
-        });
+        setSelectedCategories(prev =>
+            prev.includes(category) ? prev.filter(cat => cat !== category) : [...prev, category]
+        );
     }
 
-    const value = { 
-        questions, 
-        categories, 
-        selectedCategories, 
+    const value = {
+        questions,
+        categories,
+        selectedCategories,
         toggleCategory,
         loading,
         error
     };
+
     return (
         <TriviaDataContext.Provider value={value}>
             {children}
