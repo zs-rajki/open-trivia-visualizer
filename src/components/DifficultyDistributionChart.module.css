@@ -1,15 +1,29 @@
 .chartContainer {
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    color: #ffffff;
+    width: 100%;
+    height: 100%;
 }
 
 .chartTitle {
-    margin: 0 0 1rem 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #ffffff;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 400;
+    color: #858585;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Pie chart styling */
+.pieChart {
+    /* You can add additional chart container styles here */
+}
+
+.pieCell {
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.pieCell:hover {
+    opacity: 0.8;
 }
 

@@ -1,0 +1,36 @@
+.tooltip {
+    background: #0F0F0F;
+    border: 1px solid #858585;
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.label {
+    font-family: "Geist", sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+}
+
+.value {
+    font-family: "Geist", sans-serif;
+    font-weight: 400;
+    color: #858585;
+    font-size: 0.8rem;
+}
+
+.number {
+    font-family: "Geist", sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    font-size: 1rem;
+}
+
+/* Disable Recharts tooltip slide/transition so it appears instantly */
+:global(.recharts-tooltip-wrapper) {
+    transition: none !important;
+}
+
+

@@ -15,16 +15,18 @@ function App() {
         <div className="grid">
             <div className="header">
                 <h1>Open Trivia Visualizer</h1>
-                <p>Loaded {questions.length} questions from {categories.length} categories.</p>
             </div>
             <div className="category-panel">
                 <CategoryPanel />
             </div>
-            <div className="question-distribution-chart">
-                <QuestionDistributionChart />
+            <div className="summary">
+                <p>Loaded {questions.length} questions from {categories.length} categories.</p>
             </div>
             <div className="difficulty-distribution-chart">
                 <DifficultyDistributionChart />
+            </div>
+            <div className="question-distribution-chart">
+                <QuestionDistributionChart />
             </div>
         </div>
     );

@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import { useTriviaData } from "../TriviaDataContext";
 import styles from './QuestionDistributionChart.module.css';
+import ChartTooltip from './ChartTooltip';
 
 export default function QuestionDistributionChart() {
     const { questions, selectedCategories, loading, error } = useTriviaData();
@@ -52,12 +53,38 @@ export default function QuestionDistributionChart() {
         <div className={styles.chartContainer}>
             <h3 className={styles.chartTitle}>Question Distribution by Category</h3>
             <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" interval={0} angle={-20} textAnchor="end" height={70} />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="count" fill="#8884d8" radius={[6, 6, 0, 0]} />
+                <BarChart 
+                    data={data} 
+                    margin={{ top: 20, right: 20, left: 20, bottom: 40 }}
+                    className={styles.barChart}
+                >
+                    <CartesianGrid 
+                        strokeDasharray="5 5" 
+                        stroke="rgba(255, 255, 255, 0.2)"
+                        vertical={false}
+                    />
+                    <XAxis 
+                        dataKey="name" 
+                        interval={0} 
+                        angle={-35} 
+                        textAnchor="end" 
+                        height={80}
+                        tick={{ fill: '#858585', fontFamily: 'Geist, sans-serif', fontSize: "0.5rem" }}
+                        tickLine={{ stroke: 'rgba(255, 255, 255, 0.4)' }}
+                    />
+                    <YAxis 
+                        tick={{ fill: '#858585', fontFamily: 'Geist, sans-serif', fontWeight: "600", fontSize: "1rem" }}
+                        tickLine={{ stroke: 'rgba(255, 255, 255, 0.4)' }}
+                        axisLine={{ stroke: 'rgba(255, 255, 255, 0.4)' }}
+                    />
+                    <Tooltip content={<ChartTooltip valueLabel="Count" />} />
+                    <Bar 
+                        dataKey="count" 
+                        fill="#FCA311"
+                        fillOpacity={0.75} 
+                        radius={[8, 8, 0, 0]}
+                        className={styles.bar}
+                    />
                 </BarChart>
             </ResponsiveContainer>
         </div>
