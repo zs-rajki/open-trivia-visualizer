@@ -13,25 +13,7 @@ import styles from './QuestionDistributionChart.module.css';
 import ChartTooltip from './ChartTooltip';
 
 export default function QuestionDistributionChart() {
-    const { questions, selectedCategories, loading, error } = useTriviaData();
-
-    if (loading) {
-        return (
-            <div className={styles.chartContainer}>
-                <h3 className={styles.chartTitle}>Question Distribution by Category</h3>
-                <p>Loading chart data...</p>
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className={styles.chartContainer}>
-                <h3 className={styles.chartTitle}>Question Distribution by Category</h3>
-                <p style={{ color: "red" }}>Error: {error}</p>
-            </div>
-        );
-    }
+    const { questions, selectedCategories } = useTriviaData();
 
     // Count how many questions per category (filtered by selectedCategories)
     const data = questions

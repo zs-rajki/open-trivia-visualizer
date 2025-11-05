@@ -12,25 +12,7 @@ import styles from "./DifficultyDistributionChart.module.css";
 import ChartTooltip from "./ChartTooltip";
 
 export default function DifficultyDistributionChart() {
-    const { questions, selectedCategories, loading, error } = useTriviaData();
-
-    if (loading) {
-        return (
-            <div className={styles.chartContainer}>
-                <h3 className={styles.chartTitle}>Question Distribution by Difficulty</h3>
-                <p>Loading chart data...</p>
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className={styles.chartContainer}>
-                <h3 className={styles.chartTitle}>Question Distribution by Difficulty</h3>
-                <p style={{ color: "red" }}>Error: {error}</p>
-            </div>
-        );
-    }
+    const { questions, selectedCategories } = useTriviaData();
 
     // Filter by selected categories (if any)
     const filtered = questions.filter(
@@ -116,17 +98,7 @@ export default function DifficultyDistributionChart() {
                             />
                         ))}
                     </Pie>
-
-                    <Tooltip
-                        content={<ChartTooltip valueLabel="Count" />}
-                        contentStyle={{
-                            background: "none",
-                            border: "none",
-                            boxShadow: "none",
-                        }}
-                        wrapperStyle={{ outline: "none" }}
-                    />
-
+                    <Tooltip content={<ChartTooltip valueLabel="Count" />} />
                     <Legend
                         verticalAlign="bottom"
                         height={36}
@@ -135,7 +107,7 @@ export default function DifficultyDistributionChart() {
                             fontWeight: "600",
                             fontSize: "1rem",
                         }}
-                        iconType="circle"
+                        iconType="square"
                     />
                 </PieChart>
             </ResponsiveContainer>
