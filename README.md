@@ -2,6 +2,8 @@
 
 A small React app that fetches questions from the Open Trivia DB and visualizes the data with charts (by category and difficulty).
 
+Check it out: <https://zsrajki.com/open-trivia-visualizer/>
+
 Quick overview
 - Data provider and caching: [`TriviaDataContext`](src/TriviaDataContext.jsx)
 - Category list: [`CategoryPanel`](src/components/CategoryPanel.jsx)
